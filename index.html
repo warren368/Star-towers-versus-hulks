@@ -100,7 +100,7 @@
 <div id="wrap">
   <header>
     <div id="hud">
-      <div>💰 <span id="gold">100</span></div>
+      <div>💰 <span id="gold">250</span></div>
       <div>❤️ <span id="lives">20</span></div>
       <div>Wave <span id="wave">1</span>/<span id="waveMax">10</span></div>
       <div>⭐ <span id="score">0</span></div>
@@ -278,15 +278,16 @@
   }
 
   function makeHulk(){
-    return {
-      x: pathPoints[0].x, y: pathPoints[0].y,
-      seg: 0,
-      speed: 60,
-      hp: 140 + wave*22,
-      maxhp: 140 + wave*22,
-      reward: 12 + Math.floor(wave*0.8)
-    };
-  }
+  const baseHp = 60 + wave * 8;  // much lower than before
+  return {
+    x: pathPoints[0].x, y: pathPoints[0].y,
+    seg: 0,
+    speed: 60,
+    hp: baseHp,
+    maxhp: baseHp,
+    reward: 15 + wave * 2   // a bit more gold per kill
+  };
+}
 
   function startWave(){
     if (spawning) return;
